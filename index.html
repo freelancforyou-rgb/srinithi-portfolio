@@ -1,0 +1,492 @@
+f<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Srinithi Boopathi · Full Stack · UI/UX</title>
+  <meta name="description" content="Computer Science graduate with professional teaching experience, focused on Full Stack Development and UI/UX." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Times New Roman', Times, serif; background: #030712; color: #F9FAFB; line-height: 1.6; }
+    ::selection { background: #2563EB; color: white; }
+    html { scroll-behavior: smooth; }
+    .noise-bg {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .nav-blur { background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .card { background: #111827; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s; }
+    .card:hover { border-color: #2563EB; transform: translateY(-4px); }
+    .btn-primary { background: #2563EB; color: white; transition: background 0.2s; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .text-secondary { color: #9CA3AF; }
+    .border-subtle { border-color: rgba(255,255,255,0.05); }
+    .bg-card { background: #111827; }
+    .bg-section { background: rgba(15, 23, 42, 0.3); }
+    .skill-tag { background: #1e293b; color: #9CA3AF; border: 1px solid rgba(255,255,255,0.05); }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Times New Roman', Times, serif;
+    }
+    .project-detail {
+      color: #9CA3AF;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Profile image styling */
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <h1 class="text-xl font-bold tracking-tight text-white">Srinithi Boopathi</h1>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#home" class="text-[#9CA3AF] hover:text-white transition">Home</a>
+      <a href="#about" class="text-[#9CA3AF] hover:text-white transition">About</a>
+      <a href="#experience" class="text-[#9CA3AF] hover:text-white transition">Experience</a>
+      <a href="#skills" class="text-[#9CA3AF] hover:text-white transition">Skills</a>
+      <a href="#projects" class="text-[#9CA3AF] hover:text-white transition">Projects</a>
+      <a href="#certifications" class="text-[#9CA3AF] hover:text-white transition">Certifications</a>
+      <a href="#contact" class="text-[#9CA3AF] hover:text-white transition">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-white" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-[#030712]/95 backdrop-blur-lg border-b border-white/5 px-6 py-4">
+    <div class="flex flex-col gap-4 text-sm font-medium">
+      <a href="#home" class="text-[#9CA3AF] hover:text-white transition">Home</a>
+      <a href="#about" class="text-[#9CA3AF] hover:text-white transition">About</a>
+      <a href="#experience" class="text-[#9CA3AF] hover:text-white transition">Experience</a>
+      <a href="#skills" class="text-[#9CA3AF] hover:text-white transition">Skills</a>
+      <a href="#projects" class="text-[#9CA3AF] hover:text-white transition">Projects</a>
+      <a href="#certifications" class="text-[#9CA3AF] hover:text-white transition">Certifications</a>
+      <a href="#contact" class="text-[#9CA3AF] hover:text-white transition">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section id="home" class="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden">
+  <div class="noise-bg absolute inset-0"></div>
+  <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="inline-block text-xs font-semibold tracking-widest text-[#38BDF8] bg-[#2563EB]/10 px-4 py-1.5 rounded-full mb-6">
+          COMPUTER SCIENCE • FULL STACK • UI/UX
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight text-white">
+          Building practical digital experiences with code and design.
+        </h1>
+        <p class="mt-6 text-lg text-[#9CA3AF] max-w-lg">
+          Computer Science graduate with 2 years of professional teaching experience, focused on Full Stack Development, modern web technologies, and UI/UX design.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <a href="#projects" class="px-6 py-3 btn-primary rounded-lg font-medium flex items-center gap-2">
+            View My Work <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="Srinithi_Boopathi_Resume.pdf" class="px-6 py-3 border border-white/10 text-white rounded-lg font-medium hover:bg-white/5 transition flex items-center gap-2">
+            Download Resume <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </a>
+        </div>
+        <div class="mt-8 flex items-center gap-2 text-sm text-[#38BDF8] bg-[#2563EB]/10 px-4 py-2 rounded-full w-fit">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#38BDF8] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#38BDF8]"></span>
+          </span>
+          Open to IT Opportunities
+        </div>
+      </div>
+      <!-- Added 'items-center' to center the image vertically relative to text -->
+      <div class="flex justify-center items-center">
+        <!-- Rectangle container: Increased size (w-80 h-96 on mobile, w-96 h-[28rem] on desktop) -->
+        <div class="w-80 h-96 md:w-96 md:h-[28rem] bg-[#030712] overflow-hidden shadow-2xl rounded-xl border border-white/10">
+          <!-- Image filling the rectangle -->
+          <img 
+            src="profile.png"
+            alt="Srinithi Boopathi" 
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+      </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="py-20 bg-section reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="md:col-span-2">
+        <p class="text-[#9CA3AF] text-lg leading-relaxed">
+          I'm a Computer Science graduate (BE, CGPA 8.33/10) with 2 years of professional experience as a Lecturer. 
+          My background bridges technical depth and teaching clarity — I build modern web applications with a focus on 
+          Full Stack Development, UI/UX fundamentals, and practical software solutions. I enjoy working with React, Node.js, 
+          and modern tools to create clean, functional digital experiences.
+        </p>
+      </div>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="card p-4 rounded-xl text-center">
+          <div class="text-2xl font-bold text-[#38BDF8]">2+</div>
+          <div class="text-xs text-[#9CA3AF]">Years Experience</div>
+        </div>
+        <div class="card p-4 rounded-xl text-center">
+          <div class="text-2xl font-bold text-[#38BDF8]">8.33</div>
+          <div class="text-xs text-[#9CA3AF]">CGPA</div>
+        </div>
+        <div class="card p-4 rounded-xl text-center">
+          <div class="text-2xl font-bold text-[#38BDF8]">Full</div>
+          <div class="text-xs text-[#9CA3AF]">Stack Focus</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EXPERIENCE ========== -->
+<section id="experience" class="py-20 reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-white mb-10">Experience</h2>
+    <div class="relative border-l-2 border-[#2563EB] pl-8">
+      <div class="mb-12">
+        <div class="absolute -left-3.5 mt-1.5 w-6 h-6 rounded-full bg-[#2563EB] border-4 border-[#030712]"></div>
+        <h3 class="text-2xl font-semibold text-white">Lecturer</h3>
+        <p class="text-[#38BDF8] font-medium">Sri Ranganathar Institute of Polytechnic College</p>
+        <p class="text-sm text-[#9CA3AF] flex items-center gap-2 mt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          2 Years
+        </p>
+        <ul class="mt-4 space-y-2 text-[#9CA3AF]">
+          <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg> Teaching Computer Science and programming concepts</li>
+          <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg> Working with students on technical projects</li>
+          <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg> Explaining programming and database concepts</li>
+          <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg> Supporting practical/lab-based learning</li>
+          <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg> Developing technical learning materials</li>
+          <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg> Working with web development and software-related projects</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SKILLS ========== -->
+<section id="skills" class="py-20 bg-section reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-white mb-10">Skills</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card p-6 rounded-xl">
+        <h3 class="text-lg font-semibold text-white mb-4">Programming</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Python</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Java</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">JavaScript</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">SQL</span>
+        </div>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="text-lg font-semibold text-white mb-4">Frontend</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">HTML</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">CSS</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">React.js</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Bootstrap</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Tailwind CSS</span>
+        </div>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="text-lg font-semibold text-white mb-4">Backend</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Node.js</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Django</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">PHP</span>
+        </div>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="text-lg font-semibold text-white mb-4">Database</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">MySQL</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">SQL</span>
+        </div>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="text-lg font-semibold text-white mb-4">UI/UX</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Figma</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Wireframing</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Color Theory</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Typography</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Basic UI/UX</span>
+        </div>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="text-lg font-semibold text-white mb-4">Tools</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">VS Code</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">PyCharm</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Android Studio</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Photoshop</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Git/GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROJECTS ========== -->
+<section id="projects" class="py-20 reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-white mb-10">Featured Projects</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- project 1 -->
+      <div class="card md:col-span-2 rounded-xl overflow-hidden p-6">
+        <div class="flex items-start justify-between">
+          <h3 class="text-xl font-semibold text-white">SRIPC College Management / Website</h3>
+          <span class="text-xs bg-[#2563EB]/20 text-[#38BDF8] px-3 py-1 rounded-full">Featured</span>
+        </div>
+        <p class="mt-3 text-[#9CA3AF]">A modern college-focused web platform designed to organize and present institutional information and improve the digital experience for students and users.</p>
+        <div class="mt-4 space-y-2 project-detail">
+          <p><span class="text-white font-medium">Key Features:</span> Student portal, faculty management, course catalog, event calendar, notice board, and responsive design for all devices.</p>
+          <p><span class="text-white font-medium">Role:</span> Full Stack Developer - Designed and implemented the frontend with React.js, integrated backend APIs, and ensured responsive UI/UX.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">React.js</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Tailwind CSS</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Node.js</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">MongoDB</span>
+        </div>
+      </div>
+      <!-- project 2 -->
+      <div class="card rounded-xl overflow-hidden p-6">
+        <h3 class="text-xl font-semibold text-white">Library Management System</h3>
+        <p class="mt-3 text-[#9CA3AF]">A system designed to manage library-related operations such as books, records, and user information through a structured digital interface.</p>
+        <div class="mt-4 space-y-2 project-detail">
+          <p><span class="text-white font-medium">Key Features:</span> Book catalog, member management, issue/return tracking, fine calculation, search functionality, and report generation.</p>
+          <p><span class="text-white font-medium">Role:</span> Developer - Built the database schema, implemented CRUD operations, and created an intuitive user interface.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Web technologies</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">database integration</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">PHP</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">MySQL</span>
+        </div>
+      </div>
+      <!-- project 3 -->
+      <div class="card rounded-xl overflow-hidden p-6">
+        <h3 class="text-xl font-semibold text-white">Blood Management System</h3>
+        <p class="mt-3 text-[#9CA3AF]">A database-driven system designed to manage blood donor and blood availability information.</p>
+        <div class="mt-4 space-y-2 project-detail">
+          <p><span class="text-white font-medium">Key Features:</span> Donor registration, blood stock monitoring, donor-recipient matching, emergency requests, and availability alerts.</p>
+          <p><span class="text-white font-medium">Role:</span> Developer - Implemented the backend logic, designed the database, and created the admin dashboard.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">PHP</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">MySQL</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">HTML/CSS</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">JavaScript</span>
+        </div>
+      </div>
+      <!-- project 4 -->
+      <div class="card rounded-xl overflow-hidden p-6">
+        <h3 class="text-xl font-semibold text-white">Automated Braking System for Vehicles</h3>
+        <p class="mt-3 text-[#9CA3AF]">Academic project focused on vehicle safety systems and braking automation.</p>
+        <div class="mt-4 space-y-2 project-detail">
+          <p><span class="text-white font-medium">Key Features:</span> Sensor-based braking, obstacle detection, emergency stop system, and real-time response mechanism.</p>
+          <p><span class="text-white font-medium">Role:</span> Academic Researcher - Conducted research on braking algorithms, simulated system behavior, and documented findings.</p>
+          <p><span class="text-white font-medium">Technologies:</span> Embedded C, Arduino, ultrasonic sensors, servo motors.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Academic</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Embedded</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Arduino</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">C</span>
+        </div>
+      </div>
+      <!-- project 5 -->
+      <div class="card rounded-xl overflow-hidden p-6">
+        <h3 class="text-xl font-semibold text-white">Smart City Waste Management System</h3>
+        <p class="mt-3 text-[#9CA3AF]">Academic project exploring IoT and data-driven waste collection optimization.</p>
+        <div class="mt-4 space-y-2 project-detail">
+          <p><span class="text-white font-medium">Key Features:</span> Real-time bin monitoring, route optimization, predictive analytics, and automated scheduling.</p>
+          <p><span class="text-white font-medium">Role:</span> Academic Researcher - Developed the IoT prototype, analyzed data patterns, and proposed optimization algorithms.</p>
+          <p><span class="text-white font-medium">Technologies:</span> IoT sensors, cloud integration, data analytics, and dashboard visualization.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Academic</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">IoT</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Python</span>
+          <span class="skill-tag px-3 py-1 rounded-full text-xs">Cloud</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CERTIFICATIONS ========== -->
+<section id="certifications" class="py-20 bg-section reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-white mb-10">Certifications</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card p-6 rounded-xl">
+        <h3 class="font-semibold text-white text-lg">Cloud Programming in Java</h3>
+        <p class="text-sm text-[#38BDF8] font-medium">NPTEL</p>
+        <p class="text-sm text-[#9CA3AF] mt-2">Completed a comprehensive course covering cloud computing concepts, Java programming for cloud environments, and practical implementation of cloud-based solutions.</p>
+        <span class="inline-block mt-3 text-xs bg-[#2563EB]/20 text-[#38BDF8] px-3 py-1 rounded-full">2023</span>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="font-semibold text-white text-lg">Full Stack Python</h3>
+        <p class="text-sm text-[#38BDF8] font-medium">GUVI</p>
+        <p class="text-sm text-[#9CA3AF] mt-2">Intensive program covering Python programming, web frameworks (Django/Flask), frontend technologies, and full-stack application development.</p>
+        <span class="inline-block mt-3 text-xs bg-[#2563EB]/20 text-[#38BDF8] px-3 py-1 rounded-full">2023</span>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="font-semibold text-white text-lg">AI for India 2.0</h3>
+        <p class="text-sm text-[#38BDF8] font-medium">GUVI</p>
+        <p class="text-sm text-[#9CA3AF] mt-2">Focused on artificial intelligence applications in the Indian context, covering AI fundamentals, machine learning, and real-world AI solutions.</p>
+        <span class="inline-block mt-3 text-xs bg-[#2563EB]/20 text-[#38BDF8] px-3 py-1 rounded-full">2023</span>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="font-semibold text-white text-lg">Python Programming</h3>
+        <p class="text-sm text-[#38BDF8] font-medium">Macnus</p>
+        <p class="text-sm text-[#9CA3AF] mt-2">Comprehensive Python training covering core concepts, data structures, object-oriented programming, and practical problem-solving skills.</p>
+        <span class="inline-block mt-3 text-xs bg-[#2563EB]/20 text-[#38BDF8] px-3 py-1 rounded-full">2022</span>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="font-semibold text-white text-lg">Java Programming</h3>
+        <p class="text-sm text-[#38BDF8] font-medium">Neolysis</p>
+        <p class="text-sm text-[#9CA3AF] mt-2">Advanced Java training covering core Java, OOP principles, collections framework, and enterprise application development.</p>
+        <span class="inline-block mt-3 text-xs bg-[#2563EB]/20 text-[#38BDF8] px-3 py-1 rounded-full">2022</span>
+      </div>
+      <div class="card p-6 rounded-xl">
+        <h3 class="font-semibold text-white text-lg">Cloud Computing</h3>
+        <p class="text-sm text-[#38BDF8] font-medium">Oracle</p>
+        <p class="text-sm text-[#9CA3AF] mt-2">Oracle Cloud Infrastructure certification covering cloud architecture, services, deployment models, and cloud management best practices.</p>
+        <span class="inline-block mt-3 text-xs bg-[#2563EB]/20 text-[#38BDF8] px-3 py-1 rounded-full">2023</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RESUME CTA ========== -->
+<section id="resume" class="py-20 reveal">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-white">Want the complete picture?</h2>
+    <p class="mt-4 text-[#9CA3AF]">Download my resume to explore my experience, skills, education, certifications, and projects.</p>
+    <a href="Srinithi_Boopathi_Resume.pdf" class="inline-flex items-center gap-2 mt-8 px-8 py-4 btn-primary rounded-lg font-medium">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Resume
+    </a>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="py-20 bg-section reveal">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-white text-center">Let's build something useful.</h2>
+    <p class="text-center text-[#9CA3AF] mt-2">I'm open to opportunities in Full Stack Development, Web Development, and UI/UX-related roles.</p>
+    <div class="flex justify-center gap-6 mt-6 text-[#9CA3AF]">
+      <a href="mailto:srinithiboopathi9942@gmail.com" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+      <a href="https://www.linkedin.com/in/srinithi-boopathi-a31590284/" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="tel:+91 96263 17831" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></a>
+    </div>
+    <form class="mt-10 space-y-4 max-w-lg mx-auto" onsubmit="event.preventDefault(); alert('Form submitted (demo)');">
+      <input type="text" placeholder="Name" class="w-full px-4 py-3 bg-[#111827] border border-white/10 rounded-lg text-white placeholder-[#9CA3AF] focus:outline-none focus:border-[#2563EB] transition" required />
+      <input type="email" placeholder="Email" class="w-full px-4 py-3 bg-[#111827] border border-white/10 rounded-lg text-white placeholder-[#9CA3AF] focus:outline-none focus:border-[#2563EB] transition" required />
+      <textarea rows="4" placeholder="Message" class="w-full px-4 py-3 bg-[#111827] border border-white/10 rounded-lg text-white placeholder-[#9CA3AF] focus:outline-none focus:border-[#2563EB] transition" required></textarea>
+      <button type="submit" class="w-full py-3 btn-primary rounded-lg font-medium flex items-center justify-center gap-2">
+        Send Message <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="py-8 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#9CA3AF]">
+    <div>© 2026 Srinithi Boopathi</div>
+    <div class="flex items-center gap-4">
+      <span>Keep in Touch...</span>
+      <a href="#" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="mailto:srinithiboopathi9942@gmail.com" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  mobileBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  });
+
+  // Navbar blur on scroll
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 20) {
+      navbar.classList.add('nav-blur');
+    } else {
+      navbar.classList.remove('nav-blur');
+    }
+  });
+
+  // Scroll reveal
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
